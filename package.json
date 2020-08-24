@@ -1,0 +1,19 @@
+{
+  "name": "wa-cli",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.7.0",
+    "husky": "^4.2.5"
+  },
+  "bin": {
+    "wa-cli": "./bin/www"
+  },
+  "scripts": {
+    "lint": "eslint src"
+  },
+  "hooks": {
+    "pre-commit": "npm run lint"
+  }
+}
