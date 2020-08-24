@@ -15,5 +15,8 @@
   },
   "hooks": {
     "pre-commit": "npm run lint"
+  },
+  "dependencies": {
+    "commander": "^6.0.0"
   }
 }
