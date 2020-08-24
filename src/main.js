@@ -27,11 +27,16 @@ const actionsMap = {
 Object.keys(actionsMap).forEach(action => {
   program
     .command(action) // 命令的名称
-    .alias(actionsMap[action].alias) // 命令的别名
     .description(actionsMap[action].description) // 命令的描述
     .action(() => { // 动作
-      console.log(action);
+      if (action === '*') { // 如果动作没匹配到说明输入有误
+        console.log(actionsMap[action].description)
+      } else { // 引用对应的动作文件 将参数传入
+        require(path.resolve(__dirname, action))(...process.argv.slice(3))
+      }
     })
+    // 此处的alias需要放到最后，不知是不是bug
+    .alias(actionsMap[action].alias) // 命令的别名
 })
 
 // 编写help 命令
@@ -45,5 +50,4 @@ program.on('--help', () => {
 })
 
 program.version(version)
-  // eslint-disable-next-line no-undef
   .parse(process.argv) // process.argv就是用户在命令行中传入的参数
