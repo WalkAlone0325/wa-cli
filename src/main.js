@@ -1,4 +1,5 @@
 const program = require('commander')
+const path = require('path')
 const { version } = require('./utils/constants')
 
 // 配置命令模板
